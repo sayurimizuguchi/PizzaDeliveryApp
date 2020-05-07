@@ -36,7 +36,8 @@ export const paymentListResponse = {
             hour: '5:00PM',
             addressDelivery: '55 Main st',
             deliveryStatus: 'pending',
-            deliveryPerson: 'pending'
+            deliveryPerson: 'pending',
+            image: 'https://cdn.icon-icons.com/icons2/1465/PNG/512/543pizza1_100912.png'
           },
         },
         next_action: null,
@@ -96,7 +97,8 @@ export const paymentListResponse = {
             hour: '5:00PM',
             addressDelivery: '55 Main st',
             deliveryStatus: 'pending',
-            deliveryPerson: 'pending'
+            deliveryPerson: 'leo',
+            image: 'https://cdn.icon-icons.com/icons2/1465/PNG/512/543pizza1_100912.png'
           },
         },
         next_action: null,
@@ -156,7 +158,8 @@ export const paymentListResponse = {
             hour: '5:00PM',
             addressDelivery: '55 Main st',
             deliveryStatus: 'pending',
-            deliveryPerson: 'pending'
+            deliveryPerson: 'joana',
+            image: 'https://cdn.icon-icons.com/icons2/1465/PNG/512/543pizza1_100912.png'
           },
         },
         next_action: null,
@@ -216,7 +219,8 @@ export const paymentListResponse = {
             hour: '5:00PM',
             addressDelivery: '55 Main st',
             deliveryStatus: 'pending',
-            deliveryPerson: 'pending'
+            deliveryPerson: 'pending',
+            image: 'https://cdn.icon-icons.com/icons2/1465/PNG/512/543pizza1_100912.png'
           },
         },
         next_action: null,
@@ -274,7 +278,8 @@ export const paymentListResponse = {
             hour: '8:00PM',
             addressDelivery: '55 Main st',
             deliveryStatus: 'pending',
-            deliveryPerson: 'pending'
+            deliveryPerson: 'pending',
+            image: 'https://cdn.icon-icons.com/icons2/1465/PNG/512/543pizza1_100912.png'
           },
         },
         next_action: null,

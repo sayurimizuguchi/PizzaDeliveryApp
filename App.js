@@ -21,16 +21,6 @@ export default class App extends Component {
     this.metadata = {};
   }
 
-  async componentDidMount() {
-    try {
-      this.metadata = Object.keys(this.state.orders).map(items => {
-        console.log('items', items);
-      });
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
   render() {
     return (
       <>
@@ -39,8 +29,20 @@ export default class App extends Component {
           <ScrollView
             contentInsetAdjustmentBehavior="automatic"
             style={styles.scrollView}>
-            <Header />
-            {}
+            <View style={styles.box}>
+              {this.state.orders.paymentIntents.data.map(
+                ({ metadata }, index) => {
+                  console.log('name', metadata);
+                  return (
+                    <CardBox source={metadata.delivery.image} key={index}>
+                      <Text>{metadata.delivery.name}</Text>
+                      <Text>{metadata.delivery.hour}</Text>
+                      <Text>{metadata.delivery.addressDelivery}</Text>
+                    </CardBox>
+                  );
+                },
+              )}
+            </View>
             <View style={styles.body} />
           </ScrollView>
         </SafeAreaView>
@@ -55,5 +57,9 @@ const styles = StyleSheet.create({
   },
   body: {
     backgroundColor: Colors.white,
+  },
+  box: {
+    flex: 1,
+    padding: 50,
   },
 });
