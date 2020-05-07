@@ -8,9 +8,9 @@ type Props = {
   image: number,
 };
 
-export const CardBox = ({ children, image }: Props) => (
+export const CardBox = ({ children, source }: Props) => (
   <View style={styles.whiteCard}>
-    <Image source={image} style={styles.img} />
+    <Image source={{ uri: source }} style={styles.img} />
     <View style={styles.view}>{children}</View>
   </View>
 );
