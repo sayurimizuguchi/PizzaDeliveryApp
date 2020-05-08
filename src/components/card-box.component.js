@@ -17,16 +17,19 @@ export const CardBox = ({ children, source }: Props) => (
 
 const styles = StyleSheet.create({
   whiteCard: {
+    flexDirection: 'row',
     backgroundColor: Colors.white,
     borderRadius: 1,
     marginBottom: 28,
     marginTop: 28,
+    alignItems: 'center',
   },
   img: {
     resizeMode: 'contain',
+    width: 50,
+    height: 50,
   },
   view: {
-    flex: 1,
     marginLeft: 32,
     alignSelf: 'center',
   },
