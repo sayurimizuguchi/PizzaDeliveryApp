@@ -7,10 +7,11 @@ import {
   Text,
   StatusBar,
 } from 'react-native';
-import { Header, Colors } from 'react-native/Libraries/NewAppScreen';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 import { paymentListResponse } from './src/general.constants';
 import { CardBox } from './src/components/card-box.component';
+import { TextDefault } from './src/components/text.component';
 
 export default class App extends Component {
   constructor(properties) {
@@ -32,12 +33,16 @@ export default class App extends Component {
             <View style={styles.box}>
               {this.state.orders.paymentIntents.data.map(
                 ({ metadata }, index) => {
-                  console.log('name', metadata);
+                  console.log('name', metadata.delivery.image);
                   return (
                     <CardBox source={metadata.delivery.image} key={index}>
-                      <Text>{metadata.delivery.name}</Text>
-                      <Text>{metadata.delivery.hour}</Text>
-                      <Text>{metadata.delivery.addressDelivery}</Text>
+                      <TextDefault>
+                        {metadata.delivery.addressDelivery}
+                      </TextDefault>
+                      <TextDefault style={styles.hourText}>
+                        {metadata.delivery.hour}
+                      </TextDefault>
+                      <TextDefault>{metadata.delivery.name}</TextDefault>
                     </CardBox>
                   );
                 },
@@ -61,5 +66,10 @@ const styles = StyleSheet.create({
   box: {
     flex: 1,
     padding: 50,
+  },
+  hourText: {
+    color: 'gray',
+    fontFamily: 'sans-serif-medium',
+    fontSize: 10,
   },
 });

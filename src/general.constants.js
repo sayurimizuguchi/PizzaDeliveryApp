@@ -34,7 +34,7 @@ export const paymentListResponse = {
           delivery: {
             name: 'Jonh',
             hour: '5:00PM',
-            addressDelivery: '55 Main st',
+            addressDelivery: '15 Rogers st',
             deliveryStatus: 'pending',
             deliveryPerson: 'pending',
             image: 'https://cdn.icon-icons.com/icons2/1465/PNG/512/543pizza1_100912.png'
@@ -93,9 +93,9 @@ export const paymentListResponse = {
         livemode: false,
         metadata: {
           delivery: {
-            name: 'Jonh',
+            name: 'Ashley',
             hour: '5:00PM',
-            addressDelivery: '55 Main st',
+            addressDelivery: '55 Broadway st',
             deliveryStatus: 'pending',
             deliveryPerson: 'leo',
             image: 'https://cdn.icon-icons.com/icons2/1465/PNG/512/543pizza1_100912.png'
@@ -154,9 +154,9 @@ export const paymentListResponse = {
         livemode: false,
         metadata: {
           delivery: {
-            name: 'Jonh',
-            hour: '5:00PM',
-            addressDelivery: '55 Main st',
+            name: 'Jas',
+            hour: '3:00PM',
+            addressDelivery: '55 Voy st',
             deliveryStatus: 'pending',
             deliveryPerson: 'joana',
             image: 'https://cdn.icon-icons.com/icons2/1465/PNG/512/543pizza1_100912.png'
@@ -215,9 +215,9 @@ export const paymentListResponse = {
         livemode: false,
         metadata: {
           delivery: {
-            name: 'Jonh',
+            name: 'Livia',
             hour: '5:00PM',
-            addressDelivery: '55 Main st',
+            addressDelivery: '55 York st',
             deliveryStatus: 'pending',
             deliveryPerson: 'pending',
             image: 'https://cdn.icon-icons.com/icons2/1465/PNG/512/543pizza1_100912.png'
