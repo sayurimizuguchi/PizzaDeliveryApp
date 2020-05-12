@@ -15,7 +15,7 @@ import { GET_PAYMENT_LIST } from './src/general.constants';
 import { transformRespone } from './src/api/request.utils';
 
 
-export default class App extends Component {
+class App extends Component {
   constructor(properties) {
     super(properties);
     this.state = {
@@ -103,6 +103,13 @@ export default class App extends Component {
     );
   }
 }
+
+
+export default from './storybook';
+// export default App;
+
+
+
 
 const styles = StyleSheet.create({
   scrollView: {
