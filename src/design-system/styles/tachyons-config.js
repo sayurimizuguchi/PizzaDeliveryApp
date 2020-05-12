@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Platform } from 'react-native';
 import NativeTachyons, { styles as tachyonsStyles } from 'react-native-style-tachyons';
 
 
@@ -51,12 +51,43 @@ export const colors = {
   gray_m: '#C4C4C4'
 };
 
+const iosFontClasses = {
+  serif: { fontFamily: 'Merriweather', fontWeight: '100', },
+  serif_bold: { fontFamily: 'Merriweather', fontWeight: '700' },
+  sans_serif: { fontFamily: 'Merriweather Sans', fontWeight: '100' },
+  sans_serif_bold: { fontFamily: 'Merriweather Sans', fontWeight: '700' },
+};
+const androidFontClasses = {
+  serif: { fontFamily: 'Merriweather', fontWeight: '100', },
+  serif_bold: { fontFamily: 'Merriweather', fontWeight: '700' },
+  sans_serif: { fontFamily: 'Merriweather Sans', fontWeight: '100' },
+  sans_serif_bold: { fontFamily: 'Merriweather Sans', fontWeight: '700' },
+};
+
+const platformFonts = {
+  ...Platform.select({
+    ios: iosFontClasses,
+    android: androidFontClasses,
+  })
+};
+
+const fonts = {
+  f_heading_1: [ platformFonts.serif_bold, tachyonsStyles.f1 ],
+  f_heading_2: [ platformFonts.serif, tachyonsStyles.f2],
+  f_heading_3: [ platformFonts.serif_bold, tachyonsStyles.f3],
+  f_copy: [ platformFonts.sans_serif, tachyonsStyles.f4],
+  f_copy_bold: [ platformFonts.sans_serif_bold, tachyonsStyles.f4],
+  f_emphasized: [ platformFonts.serif_bold, tachyonsStyles.f4],
+}
+
 NativeTachyons.build({
-  colors: { palette: colors }
+  colors: { palette: colors },
+  rem: fontBase,
 }, StyleSheet);
 
 export const s = {
   ...tachyonsStyles,
+  ...fonts,
   ...generateCssSpace('margin'),
   ...generateCssSpace('padding'),
 }

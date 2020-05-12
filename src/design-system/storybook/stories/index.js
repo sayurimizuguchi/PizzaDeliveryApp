@@ -8,7 +8,7 @@ import { linkTo } from '@storybook/addon-links';
 import { s } from './../../styles'
 
 import Button from './Button';
-import CenterView from './CenterView';
+import { CenterView, PaddingView } from './Layouts';
 import { Swatch } from './Color/swatch';
 
 storiesOf('Color', module)
@@ -19,6 +19,19 @@ storiesOf('Color', module)
       <Swatch style={[s.bg_yellow_m]} />
       <Swatch style={[s.bg_black]} />
       <Swatch style={[s.bg_gray_m]} />
+    </>
+  ))
+
+  storiesOf('Typography', module)
+  .addDecorator(getStory => <PaddingView>{getStory()}</PaddingView>)
+  .add('fonts', () => (
+    <>
+      <Text style={[s.f_heading_1]}>Heading-1</Text>
+      <Text style={[s.f_heading_2]}>Heading-1</Text>
+      <Text style={[s.f_heading_3]}>Heading-1</Text>
+      <Text style={[s.f_copy]}>copy</Text>
+      <Text style={[s.f_copy_bold]}>copy bold</Text>
+      <Text style={[s.f_emphasized]}>Emphasized</Text>
     </>
   ))
 
