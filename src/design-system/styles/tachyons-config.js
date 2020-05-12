@@ -48,7 +48,8 @@ export const colors = {
   orange_m: '#F8A467',
   yellow_m: '#F8CF67',
   black: '#323232',
-  gray_m: '#C4C4C4'
+  gray_m: '#C4C4C4',
+  white: '#ffffff',
 };
 
 const iosFontClasses = {

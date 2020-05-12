@@ -1,7 +1,6 @@
-import * as React from "react"
-import { Text } from 'react-native';
-import Svg, { Path } from "react-native-svg"
-import { s, colors} from "../styles";
+import * as React from 'react'
+import Svg, { Path } from 'react-native-svg'
+import { colors} from './../styles';
 
 const Icons = (
   width,

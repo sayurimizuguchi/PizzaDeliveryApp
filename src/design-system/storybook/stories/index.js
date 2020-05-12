@@ -5,12 +5,16 @@ import { storiesOf } from '@storybook/react-native';
 import { action } from '@storybook/addon-actions';
 import { linkTo } from '@storybook/addon-links';
 
-import { s } from './../../styles'
+import { s, colors } from './../../styles'
 
 import Button from './Button';
 import { CenterView, PaddingView } from './Layouts';
 import { Swatch } from './Color/swatch';
-import { MotorCycle, Icon } from '../../components/icon.component';
+import { Icon } from '../../components/icon.component';
+import { ButtonPrimary } from '../../components/button-primary.component';
+import { ButtonSecondary } from '../../components/button-secondary.component';
+import { ButtonIcon } from '../../components/button-icon.component';
+import { LinkIcon } from '../../components/link-icon.component';
 
 storiesOf('Color', module)
   .addDecorator(getStory => <CenterView>{getStory()}</CenterView>)
@@ -54,13 +58,23 @@ storiesOf('Color', module)
 
 storiesOf('Button', module)
   .addDecorator(getStory => <CenterView>{getStory()}</CenterView>)
-  .add('with text', () => (
-    <Button onPress={action('clicked-text')}>
-      <Text>Hello Buttonnnnn</Text>
-    </Button>
+  .add('ButtonPrimary', () => (
+    <ButtonPrimary>
+      <Text style={[s.white, s.f_copy_bold]}>Button Primary</Text>
+    </ButtonPrimary>
   ))
-  .add('with some emoji', () => (
-    <Button onPress={action('clicked-emoji')}>
-      <Text>😀 😎 👍 💯</Text>
-    </Button>
-  ));
+  .add('ButtonSecondary', () => (
+    <ButtonSecondary>
+      <Text style={[s.white, s.f_copy_bold]}>Button Secondary</Text>
+    </ButtonSecondary>
+  ))
+  .add('ButtonSecondary', () => (
+    <ButtonIcon iconName="motorcycle">
+      <Text style={[s.white, s.f_copy_bold]}>Button Secondary</Text>
+    </ButtonIcon>
+  ))
+  .add('LinkIcon', () => (
+    <LinkIcon iconName="left-arrow">
+      <Text style={[s.f_copy]}>Button Secondary</Text>
+    </LinkIcon>
+  ))
