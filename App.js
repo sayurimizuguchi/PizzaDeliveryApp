@@ -105,7 +105,7 @@ class App extends Component {
 }
 
 
-export default from './storybook';
+export default from './src/design-system/storybook';
 // export default App;
 
 
