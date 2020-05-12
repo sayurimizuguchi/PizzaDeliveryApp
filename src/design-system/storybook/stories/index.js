@@ -10,6 +10,7 @@ import { s } from './../../styles'
 import Button from './Button';
 import { CenterView, PaddingView } from './Layouts';
 import { Swatch } from './Color/swatch';
+import { MotorCycle, Icon } from '../../components/icon.component';
 
 storiesOf('Color', module)
   .addDecorator(getStory => <CenterView>{getStory()}</CenterView>)
@@ -32,6 +33,21 @@ storiesOf('Color', module)
       <Text style={[s.f_copy]}>copy</Text>
       <Text style={[s.f_copy_bold]}>copy bold</Text>
       <Text style={[s.f_emphasized]}>Emphasized</Text>
+    </>
+  ))
+
+  storiesOf('Icons', module)
+  .addDecorator(getStory => <PaddingView>{getStory()}</PaddingView>)
+  .add('icons', () => (
+    <>
+      <Icon name="motorcycle" />
+      <Icon name="bill" />
+      <Icon name="burger" />
+      <Icon name="check" />
+      <Icon name="close" />
+      <Icon name="cog" />
+      <Icon name="credit-card" />
+      <Icon name="left-arrow" />
     </>
   ))
 
