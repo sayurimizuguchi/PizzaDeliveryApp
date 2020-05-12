@@ -6,7 +6,7 @@ import { s, colors } from './../styles';
 
 export const LinkIcon = ({
   children,
-  iconName = motorcycle,
+  iconName = 'left-arrow',
   props,
 }) =>
   <TouchableOpacity {...props} style={[s.flx_row, s.jcc, s.aic]}>
