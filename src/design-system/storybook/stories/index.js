@@ -32,8 +32,8 @@ storiesOf('Color', module)
   .add('fonts', () => (
     <>
       <Text style={[s.f_heading_1]}>Heading-1</Text>
-      <Text style={[s.f_heading_2]}>Heading-1</Text>
-      <Text style={[s.f_heading_3]}>Heading-1</Text>
+      <Text style={[s.f_heading_2]}>Heading-2</Text>
+      <Text style={[s.f_heading_3]}>Heading-3</Text>
       <Text style={[s.f_copy]}>copy</Text>
       <Text style={[s.f_copy_bold]}>copy bold</Text>
       <Text style={[s.f_emphasized]}>Emphasized</Text>
