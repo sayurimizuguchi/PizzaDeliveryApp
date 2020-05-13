@@ -15,6 +15,7 @@ import { ButtonPrimary } from '../../components/button-primary.component';
 import { ButtonSecondary } from '../../components/button-secondary.component';
 import { ButtonIcon } from '../../components/button-icon.component';
 import { LinkIcon } from '../../components/link-icon.component';
+import { ToggleableStrike } from '../../components/toggleable-strike';
 
 storiesOf('Color', module)
   .addDecorator(getStory => <CenterView>{getStory()}</CenterView>)
@@ -27,7 +28,7 @@ storiesOf('Color', module)
     </>
   ))
 
-  storiesOf('Typography', module)
+storiesOf('Typography', module)
   .addDecorator(getStory => <PaddingView>{getStory()}</PaddingView>)
   .add('fonts', () => (
     <>
@@ -40,7 +41,7 @@ storiesOf('Color', module)
     </>
   ))
 
-  storiesOf('Icons', module)
+storiesOf('Icons', module)
   .addDecorator(getStory => <PaddingView>{getStory()}</PaddingView>)
   .add('icons', () => (
     <>
@@ -77,4 +78,11 @@ storiesOf('Button', module)
     <LinkIcon iconName="left-arrow">
       <Text style={[s.f_copy]}>Button Secondary</Text>
     </LinkIcon>
+  ));
+
+storiesOf('ToggleableStrike', module)
+  .addDecorator(getStory => <CenterView>{getStory()}</CenterView>)
+  .add('Striked', () => (
+    <ToggleableStrike striked>252 Montrose Ave</ToggleableStrike>
   ))
+

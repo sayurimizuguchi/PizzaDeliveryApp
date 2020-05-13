@@ -26,9 +26,9 @@ class App extends Component {
       'https://cdn.icon-icons.com/icons2/1465/PNG/512/543pizza1_100912.png';
   }
 
-  async componentWillMount () {
+  async componentWillMount() {
     console.log(' BEFORE this.state.orders', this.state.orders)
-    try { 
+    try {
       await fetch(GET_PAYMENT_LIST, {
         method: 'GET',
         headers: {
@@ -36,19 +36,19 @@ class App extends Component {
           'Content-Type': 'application/json',
         },
       })
-      .then(response => transformRespone(response))
-      .then(responseJSON => {
-        this.setState({ orders: responseJSON })
-     });
-  
+        .then(response => transformRespone(response))
+        .then(responseJSON => {
+          this.setState({ orders: responseJSON })
+        });
+
     } catch (err) {
-        console.log(err);
+      console.log(err);
     }
     console.log(' AFTER this.state.orders', this.state.orders)
   }
 
-  async completePayment () {
-    try { 
+  async completePayment() {
+    try {
       await fetch(CONFIRM_PAYMENT, {
         method: 'POST',
         headers: {
@@ -59,13 +59,13 @@ class App extends Component {
           id: this.state.orders.data,
         }
       })
-      .then(response => transformRespone(response))
-      .then(responseJSON => {
-        this.setState({ orders: responseJSON })
-     });
-  
+        .then(response => transformRespone(response))
+        .then(responseJSON => {
+          this.setState({ orders: responseJSON })
+        });
+
     } catch (err) {
-        console.log(err);
+      console.log(err);
     }
     console.log(' AFTER this.state.orders', this.state.orders)
   }
