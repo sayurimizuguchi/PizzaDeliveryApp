@@ -1,3 +1,9 @@
+export const STRIPE_URL = 'http://ec2-34-227-31-122.compute-1.amazonaws.com:3000';
+
+export const GET_PAYMENT_LIST = `${STRIPE_URL}/recent-payment-intents?limit=5`;
+
+export const CONFIRM_PAYMENT = `${STRIPE_URL}/confirm-payment`;
+
 export const paymentListResponse = {
   paymentIntents: {
     object: 'list',
