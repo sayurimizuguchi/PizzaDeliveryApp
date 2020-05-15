@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { FlatList, View } from 'react-native';
+import { FlatList } from 'react-native';
 import { DeliveryItem } from './delivery-item.component';
 import { s } from '../../design-system/styles';
 import { getDeliveries } from './data/get-deliveries';
-import { reserveDelivery } from './data/reserve-delivery';
 
 
 
 export const DeliveriesList = ({
-  driverId,
+  onDeliveryStart = () => { },
   style = []
 }) => {
 
@@ -19,16 +18,14 @@ export const DeliveriesList = ({
   }, [])
 
   const handleReserve = (deliveryId) => {
-    reserveDelivery({ deliveryId, driverId });
+    onDeliveryStart(deliveryId)
   }
 
   return (
     <FlatList
       contentContainerStyle={[s.flx_i, ...style]}
       data={delivers}
-      renderItem={({ item }) => {
-        return (<DeliveryItem onPress={handleReserve} delivery={item} />)
-      }}
+      renderItem={({ item }) => <DeliveryItem onStart={handleReserve} delivery={item} />}
     />
   )
 }

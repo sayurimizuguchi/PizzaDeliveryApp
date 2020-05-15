@@ -18,28 +18,32 @@ import { MainTabs } from './components/main-tabs.component';
 import { DeliveriesList } from '../modules/deliveries/deliveries-list.component';
 import { s } from '../design-system/styles';
 import { getDriver } from '../modules/driver';
+import { reserveDelivery } from '../modules/deliveries/data/reserve-delivery';
 
 
-class App extends Component {
-  constructor(properties) {
-    super(properties);
-    this.state = {
-      orders: {},
-    };
-    this.metadata = {};
-    this.defaultImage =
-      'https://cdn.icon-icons.com/icons2/1465/PNG/512/543pizza1_100912.png';
-  }
+const App = () => {
+  // constructor(properties) {
+  //   super(properties);
+  //   this.state = {
+  //     orders: {},
+  //   };
+  //   this.metadata = {};
+  //   this.defaultImage =
+  //     'https://cdn.icon-icons.com/icons2/1465/PNG/512/543pizza1_100912.png';
+  // }
 
-  // async componentWillMount() {
-  //   console.log(' BEFORE this.state.orders', this.state.orders)
+
+  // async completePayment() {
   //   try {
-  //     await fetch(GET_PAYMENT_LIST, {
-  //       method: 'GET',
+  //     await fetch(CONFIRM_PAYMENT, {
+  //       method: 'POST',
   //       headers: {
   //         'Accept': 'application/json',
   //         'Content-Type': 'application/json',
   //       },
+  //       body: {
+  //         id: this.state.orders.data,
+  //       }
   //     })
   //       .then(response => transformRespone(response))
   //       .then(responseJSON => {
@@ -52,44 +56,25 @@ class App extends Component {
   //   console.log(' AFTER this.state.orders', this.state.orders)
   // }
 
-  async completePayment() {
-    try {
-      await fetch(CONFIRM_PAYMENT, {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-        },
-        body: {
-          id: this.state.orders.data,
-        }
-      })
-        .then(response => transformRespone(response))
-        .then(responseJSON => {
-          this.setState({ orders: responseJSON })
-        });
-
-    } catch (err) {
-      console.log(err);
-    }
-    console.log(' AFTER this.state.orders', this.state.orders)
+  const handleOnDeliveryStart = (deliveryId) => {
+    console.log('reserver and open model with:');
+    reserveDelivery({ deliveryId, driverId: getDriver().id })
   }
 
-  render() {
-    return (
-      <SafeAreaView style={[s.ba, s.flx_i]}>
-        <StatusBar barStyle="dark-content" />
-        <Header />
-        <DeliveriesList driverId={getDriver().id} style={[s.p_m]} />
-        <MainTabs />
-      </SafeAreaView>
-    );
-  }
+
+  return (
+    <SafeAreaView style={[s.ba, s.flx_i]}>
+      <StatusBar barStyle="dark-content" />
+      <Header />
+      <DeliveriesList onDeliveryStart={handleOnDeliveryStart} style={[s.p_m]} />
+      <MainTabs />
+    </SafeAreaView>
+  );
 }
 
 
-export default from './../design-system/storybook';
-// export default App;
+// export default from './../design-system/storybook';
+export default App;
 
 
 

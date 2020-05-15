@@ -26,8 +26,9 @@ const styles = {
 
 export const PillToggle = ({
   on = false,
+  onPress = () => { },
   children,
 }) =>
-  <TouchableOpacity style={[s.bg_gray_m, s.ph_s, s.pv_xs, s.br5, styles.container[on]]}>
+  <TouchableOpacity onPress={onPress} style={[s.bg_gray_m, s.ph_s, s.pv_xs, s.br5, styles.container[on]]}>
     <Text style={[styles.text[on]]}>{children}</Text>
   </TouchableOpacity>
