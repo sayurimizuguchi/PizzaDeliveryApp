@@ -7,8 +7,12 @@ import { s } from './../styles';
 export const ToggleableStrike = ({
   striked = false,
   children,
+  title = ""
 }) =>
-  <View style={[s.flx_row, s.aic]}>
+  <View style={[s.flx_row, s.aifs]}>
     <Icon name="check" />
-    <Text style={[s.f_copy_bold]}>{children}</Text>
+    <View style={{ paddingTop: 10 }}>
+      <Text style={[s.f_copy_bold]}>{title}</Text>
+      {children}
+    </View>
   </View>
