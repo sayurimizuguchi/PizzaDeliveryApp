@@ -7,6 +7,7 @@ export const DeliveryItem = ({
   delivery = {}, //<-- this should take better props
   onPress = () => { },
 }) => {
+  console.log('deliver is', { delivery });
   const handlePress = () => onPress(delivery.id)
   return (
     <TouchableOpacity onPress={handlePress} style={[s.pv_s]}>
