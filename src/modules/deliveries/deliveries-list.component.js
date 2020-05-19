@@ -21,8 +21,6 @@ export const DeliveriesList = ({
     onDeliveryReserve(deliveryItem)
   }
 
-  console.log('deliveries', delivers);
-
   return (
     <FlatList
       contentContainerStyle={[s.flx_i, ...style]}
