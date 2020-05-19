@@ -19,20 +19,23 @@ import { DeliveriesList } from '../modules/deliveries/deliveries-list.component'
 import { s } from '../design-system/styles';
 import { getDriver } from '../modules/driver';
 import { reserveDelivery } from '../modules/deliveries/data/reserve-delivery';
+import { ModalDelivery } from './components/modal-delivery';
+import { Navigation } from './navigation/navigation';
 
 
 const App = () => {
 
-  const handleOnDeliveryStart = (deliveryId) => {
-    console.log('reserver and open model with:');
-    reserveDelivery({ deliveryId, driverId: getDriver().id })
+  const handleOnDeliveryReserve = (deliveryItem) => {
+    Navigation.toggleModal('DeliveryModal', { deliveryItem });
+    reserveDelivery({ deliveryId: deliveryItem.id, driverId: getDriver().id });
   }
 
   return (
     <SafeAreaView style={[s.ba, s.flx_i]}>
       <StatusBar barStyle="dark-content" />
+      <ModalDelivery ref={Navigation.addModal('DeliveryModal')} />
       <Header />
-      <DeliveriesList onDeliveryStart={handleOnDeliveryStart} style={[s.p_m]} />
+      <DeliveriesList onDeliveryReserve={handleOnDeliveryReserve} style={[s.p_m]} />
       <MainTabs />
     </SafeAreaView>
   );

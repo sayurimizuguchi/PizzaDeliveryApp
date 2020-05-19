@@ -8,7 +8,7 @@ export const DeliveryItem = ({
   onStart = () => { },
 }) => {
   const [isSelected, setIsSelected] = useState(false);
-  const handleOnStart = () => onStart(delivery.id)
+  const handleOnStart = () => onStart(delivery)
   const toggleSelected = () => { setIsSelected(!isSelected); };
 
   return (

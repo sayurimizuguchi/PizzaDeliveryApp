@@ -7,7 +7,7 @@ import { getDeliveries } from './data/get-deliveries';
 
 
 export const DeliveriesList = ({
-  onDeliveryStart = () => { },
+  onDeliveryReserve = () => { },
   style = []
 }) => {
 
@@ -17,8 +17,8 @@ export const DeliveriesList = ({
     getDeliveries().then(setDeliveries);
   }, [])
 
-  const handleReserve = (deliveryId) => {
-    onDeliveryStart(deliveryId)
+  const handleReserve = (deliveryItem) => {
+    onDeliveryReserve(deliveryItem)
   }
 
   console.log('deliveries', delivers);

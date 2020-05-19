@@ -1,3 +1,3 @@
 export const reserveDelivery = ({ deliveryId, driverId }) => {
-  console.log(`delivered to ${deliveryId} by ${driverId}`)
+  console.log(`reserve delivery item ${deliveryId} by ${driverId}`)
 }
