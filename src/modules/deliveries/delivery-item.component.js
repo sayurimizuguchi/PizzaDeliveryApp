@@ -5,33 +5,44 @@ import { s, colors } from '../../design-system/styles'
 
 export const DeliveryItem = ({
   delivery = {}, //<-- this should take better props
+  onReserve = () => { },
   onStart = () => { },
 }) => {
-  const [isSelected, setIsSelected] = useState(false);
-  const handleOnStart = () => onStart(delivery)
-  const toggleSelected = () => { setIsSelected(!isSelected); };
+  const isReserved = !!delivery?.transfer_group;
 
-  console.log('delivery item', { delivery });
+
+  const [isSelected, setIsSelected] = useState(isReserved);
+
+
+  const handleOnStart = () => onStart(delivery)
+
+
+  const handleOnReserve = () => {
+    setIsSelected(true);
+    onReserve(delivery);
+  }
 
   return (
-    <HighlightPanel highlighted={isSelected} style={[s.mt_s, s.flx_row]}>
+    <HighlightPanel highlighted={isSelected && !delivery.isComplete} style={[s.mt_s, s.flx_row]}>
       <View style={[s.flx_i]}>
         {
-          isSelected &&
-          <TouchableOpacity onPress={toggleSelected} style={[s.absolute, s.left_0, { marginTop: 8, zIndex: 10 }]}>
+          (isSelected && !delivery.isComplete) &&
+          <TouchableOpacity style={[s.absolute, s.left_0, { marginTop: 8, zIndex: 10 }]}>
             <Icon name="close" width={25} height={25} color={colors.black} />
           </TouchableOpacity>
         }
-        <ToggleableStrike title={delivery?.metadata?.addressDelivery ?? 'Missing Address'}>
+        <ToggleableStrike striked={delivery.isComplete} title={delivery?.metadata?.addressDelivery ?? 'Missing Address'}>
           <Text style={[s.gray_m, isSelected && s.black]}>{delivery?.metadata?.hour ?? 'Change to "created"'}</Text>
-          <Text style={[s.gray_m, isSelected && s.black]}>Jordan Green</Text>
+          <Text style={[s.gray_m, isSelected && s.black]}>{delivery?.metadata?.name ?? 'Missing Name'}</Text>
         </ToggleableStrike>
       </View>
       <View>
         {
-          (!isSelected)
-            ? <PillToggle onPress={toggleSelected} on={isSelected}>Accept</PillToggle>
-            : <PillToggle onPress={handleOnStart} on={isSelected}>Start</PillToggle>
+          (delivery.isComplete)
+            ? null
+            : (!isSelected)
+              ? <PillToggle onPress={handleOnReserve} on={isSelected}>Accept</PillToggle>
+              : <PillToggle onPress={handleOnStart} on={isSelected}>Start</PillToggle>
         }
       </View>
     </HighlightPanel>

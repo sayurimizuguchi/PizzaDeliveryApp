@@ -6,6 +6,7 @@ import { ButtonPrimary } from './../../design-system/components';
 import { completeDelivery } from './../../modules/deliveries';
 
 export function ModalDelivery({
+  onCompleteDelivery = () => { }
 }, ref) {
 
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -24,9 +25,11 @@ export function ModalDelivery({
   useImperativeHandle(ref, () => ({ toggleModal: openModal }));
 
   handleDelivered = () => {
-    completeDelivery({
-      deliveryId: deliveryItem.id
-    })
+    completeDelivery({ deliveryId: deliveryItem.id })
+      .then(() => {
+        closeModal();
+        onCompleteDelivery(deliveryItem)
+      })
   }
 
   return (
@@ -41,7 +44,7 @@ export function ModalDelivery({
         <View style={[s.pb_xxxl, s.ph_l, s.aic]}>
           <Text style={[s.f_heading_3]}>{deliveryItem?.metadata?.addressDelivery ?? 'Missing Address'}</Text>
           <Text style={[s.f_copy]}>{deliveryItem?.metadata?.hour ?? 'Missing time'}</Text>
-          <Text style={[s.f_copy]}>Jordan Green</Text>
+          <Text style={[s.f_copy]}>{deliveryItem?.metadata?.name ?? 'Missing Name'}</Text>
         </View>
         <ButtonPrimary onPress={handleDelivered} style={[s.asc]}>
           <Text style={[s.f_copy_bold, s.white]}>Delivered</Text>
