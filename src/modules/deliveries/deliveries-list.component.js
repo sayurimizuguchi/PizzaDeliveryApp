@@ -21,6 +21,8 @@ export const DeliveriesList = ({
     onDeliveryStart(deliveryId)
   }
 
+  console.log('deliveries', delivers);
+
   return (
     <FlatList
       contentContainerStyle={[s.flx_i, ...style]}
