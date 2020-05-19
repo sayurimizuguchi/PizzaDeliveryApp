@@ -11,6 +11,8 @@ export const DeliveryItem = ({
   const handleOnStart = () => onStart(delivery)
   const toggleSelected = () => { setIsSelected(!isSelected); };
 
+  console.log('delivery item', { delivery });
+
   return (
     <HighlightPanel highlighted={isSelected} style={[s.mt_s, s.flx_row]}>
       <View style={[s.flx_i]}>
@@ -21,7 +23,7 @@ export const DeliveryItem = ({
           </TouchableOpacity>
         }
         <ToggleableStrike title={delivery?.metadata?.addressDelivery ?? 'Missing Address'}>
-          <Text style={[s.gray_m, isSelected && s.black]}>{delivery?.metadata?.hour ?? 'Missing time'}</Text>
+          <Text style={[s.gray_m, isSelected && s.black]}>{delivery?.metadata?.hour ?? 'Change to "created"'}</Text>
           <Text style={[s.gray_m, isSelected && s.black]}>Jordan Green</Text>
         </ToggleableStrike>
       </View>

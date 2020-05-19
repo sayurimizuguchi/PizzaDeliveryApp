@@ -1,26 +1,20 @@
-// async completePayment() {
-//   try {
-//     await fetch(CONFIRM_PAYMENT, {
-//       method: 'POST',
-//       headers: {
-//         'Accept': 'application/json',
-//         'Content-Type': 'application/json',
-//       },
-//       body: {
-//         id: this.state.orders.data,
-//       }
-//     })
-//       .then(response => transformRespone(response))
-//       .then(responseJSON => {
-//         this.setState({ orders: responseJSON })
-//       });
 
-//   } catch (err) {
-//     console.log(err);
-//   }
-//   console.log(' AFTER this.state.orders', this.state.orders)
-// }
 
-export const completeDelivery = ({ deliveryId }) => {
-  console.log(`complete delivery ${deliveryId})`);
+const STRIPE_URL = 'http://ec2-34-227-31-122.compute-1.amazonaws.com:3000';
+const CONFIRM_PAYMENT = `${STRIPE_URL}/payment/confirm`;
+
+export const completeDelivery = async ({ deliveryId }) => {
+
+  const response = await fetch(CONFIRM_PAYMENT, {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      paymentId: deliveryId,
+    })
+  });
+
+  return response;
 }

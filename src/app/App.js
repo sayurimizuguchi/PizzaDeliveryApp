@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 
-import { getPaymentList } from '../api/request';
+// import { getPaymentList } from '../api/request';
 import { CardBox } from '../components/card-box.component';
 import { TextDefault } from '../components/text.component';
 import { GET_PAYMENT_LIST } from '../general.constants';
@@ -27,7 +27,7 @@ const App = () => {
 
   const handleOnDeliveryReserve = (deliveryItem) => {
     Navigation.toggleModal('DeliveryModal', { deliveryItem });
-    reserveDelivery({ deliveryId: deliveryItem.id, driverId: getDriver().id });
+    reserveDelivery({ deliveryId: deliveryItem.id, driverId: getDriver().id })
   }
 
   return (
