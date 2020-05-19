@@ -16,6 +16,8 @@ import { ButtonSecondary } from '../../components/button-secondary.component';
 import { ButtonIcon } from '../../components/button-icon.component';
 import { LinkIcon } from '../../components/link-icon.component';
 import { ToggleableStrike } from '../../components/toggleable-strike';
+import { HighlightPanel } from '../../components/highlight-panel.component';
+import { PillToggle } from '../../components/pill-toggle.component';
 
 storiesOf('Color', module)
   .addDecorator(getStory => <CenterView>{getStory()}</CenterView>)
@@ -83,6 +85,37 @@ storiesOf('Button', module)
 storiesOf('ToggleableStrike', module)
   .addDecorator(getStory => <CenterView>{getStory()}</CenterView>)
   .add('Striked', () => (
-    <ToggleableStrike striked>252 Montrose Ave</ToggleableStrike>
+    <ToggleableStrike title="252 Montrose Ave" striked />
+  ))
+  .add('Not striked', () => (
+    <ToggleableStrike title="252 Montrose Ave" />
+  ))
+  .add('with children', () => (
+    <ToggleableStrike title="252 Montrose Ave" striked>
+      <Text style={[s.gray_m, s.f_copy]}>5:00pm</Text>
+      <Text style={[s.gray_m, s.f_copy]}>Jane Smith</Text>
+    </ToggleableStrike>
+  ));
+
+storiesOf('HighlightPanel', module)
+  .addDecorator(getStory => <PaddingView>{getStory()}</PaddingView>)
+  .add('Highlighted', () => (
+    <HighlightPanel highlighted>
+      <Text style={[s.f_copy_bold]}>Highlight Panel Content</Text>
+    </HighlightPanel>
+  ))
+  .add('Not highlighted', () => (
+    <HighlightPanel>
+      <Text style={[s.f_copy_bold]}>Highlight Panel Content</Text>
+    </HighlightPanel>
+  ));
+
+storiesOf('PillToggle', module)
+  .addDecorator(getStory => <CenterView>{getStory()}</CenterView>)
+  .add('toggled on', () => (
+    <PillToggle on>Started</PillToggle>
+  ))
+  .add('toggled off', () => (
+    <PillToggle>Started</PillToggle>
   ))
 

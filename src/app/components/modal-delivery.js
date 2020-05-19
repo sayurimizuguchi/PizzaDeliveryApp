@@ -1,0 +1,53 @@
+import React, { useImperativeHandle, useState } from 'react';
+import { View, Text } from 'react-native';
+import { s } from './../../design-system/styles';
+import { ModalBottom } from './modal-bottom';
+import { ButtonPrimary } from './../../design-system/components';
+import { completeDelivery } from './../../modules/deliveries';
+
+export function ModalDelivery({
+}, ref) {
+
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [deliveryItem, setDeliveryItem] = useState({});
+
+
+  const closeModal = () => {
+    setIsModalVisible(false);
+  }
+
+  const openModal = (params) => {
+    setIsModalVisible(true);
+    setDeliveryItem(params.deliveryItem)
+  }
+
+  useImperativeHandle(ref, () => ({ toggleModal: openModal }));
+
+  handleDelivered = () => {
+    completeDelivery({
+      deliveryId: deliveryItem.id
+    })
+  }
+
+  return (
+    <ModalBottom
+      visible={isModalVisible}
+      onClosePress={closeModal}
+    >
+      <>
+        <View style={[{ height: 250 }]}>
+          <Text>Pizza Image</Text>
+        </View>
+        <View style={[s.pb_xxxl, s.ph_l, s.aic]}>
+          <Text style={[s.f_heading_3]}>{deliveryItem?.metadata?.addressDelivery ?? 'Missing Address'}</Text>
+          <Text style={[s.f_copy]}>{deliveryItem?.metadata?.hour ?? 'Missing time'}</Text>
+          <Text style={[s.f_copy]}>Jordan Green</Text>
+        </View>
+        <ButtonPrimary onPress={handleDelivered} style={[s.asc]}>
+          <Text style={[s.f_copy_bold, s.white]}>Delivered</Text>
+        </ButtonPrimary>
+      </>
+    </ModalBottom>
+  )
+}
+ModalDelivery = React.forwardRef(ModalDelivery); 

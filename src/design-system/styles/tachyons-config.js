@@ -46,6 +46,7 @@ const generateCssSpace = (cssPropertyDomain) => {
 
 export const colors = {
   orange_m: '#F8A467',
+  orange_l: '#FFD698',
   yellow_m: '#F8CF67',
   black: '#323232',
   gray_m: '#C4C4C4',
@@ -73,12 +74,12 @@ const platformFonts = {
 };
 
 const fonts = {
-  f_heading_1: [ platformFonts.serif_bold, tachyonsStyles.f1 ],
-  f_heading_2: [ platformFonts.serif, tachyonsStyles.f2],
-  f_heading_3: [ platformFonts.serif_bold, tachyonsStyles.f3],
-  f_copy: [ platformFonts.sans_serif, tachyonsStyles.f4],
-  f_copy_bold: [ platformFonts.sans_serif_bold, tachyonsStyles.f4],
-  f_emphasized: [ platformFonts.serif_bold, tachyonsStyles.f4],
+  f_heading_1: [platformFonts.serif_bold, tachyonsStyles.f1],
+  f_heading_2: [platformFonts.serif, tachyonsStyles.f2],
+  f_heading_3: [platformFonts.serif_bold, tachyonsStyles.f3],
+  f_copy: [platformFonts.sans_serif, tachyonsStyles.f4],
+  f_copy_bold: [platformFonts.sans_serif_bold, tachyonsStyles.f4],
+  f_emphasized: [platformFonts.serif_bold, tachyonsStyles.f4],
 }
 
 NativeTachyons.build({

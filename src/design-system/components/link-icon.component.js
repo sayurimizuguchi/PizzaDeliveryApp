@@ -8,8 +8,10 @@ export const LinkIcon = ({
   children,
   iconName = 'left-arrow',
   props,
+  onPress = () => { },
+  style = [],
 }) =>
-  <TouchableOpacity {...props} style={[s.flx_row, s.jcc, s.aic]}>
+  <TouchableOpacity onPress={onPress} {...props} style={[s.flx_row, s.aic, ...style]}>
     <Icon name={iconName} color={colors.black} style={[s.mr_xxs]} />
     {children}
   </TouchableOpacity>
