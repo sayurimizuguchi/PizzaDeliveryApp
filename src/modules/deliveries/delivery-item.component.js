@@ -9,20 +9,13 @@ export const DeliveryItem = ({
   onStart = () => { },
 }) => {
   const isReserved = !!delivery?.transfer_group;
-
-
   const [isSelected, setIsSelected] = useState(isReserved);
-
-
   const handleOnStart = () => onStart(delivery)
-
 
   const handleOnReserve = () => {
     setIsSelected(true);
     onReserve(delivery);
   }
-
-  console.log('deliver', { delivery });
 
   return (
     <HighlightPanel highlighted={isSelected && !delivery.isComplete} style={[s.mt_s, s.flx_row]}>
