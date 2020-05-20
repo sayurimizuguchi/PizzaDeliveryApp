@@ -1,5 +1,5 @@
 import React, { useImperativeHandle, useState } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Image } from 'react-native';
 import { s } from './../../design-system/styles';
 import { ModalBottom } from './modal-bottom';
 import { ButtonPrimary } from './../../design-system/components';
@@ -38,8 +38,9 @@ export function ModalDelivery({
       onClosePress={closeModal}
     >
       <>
-        <View style={[{ height: 250 }]}>
+        <View style={[{ height: 250, overflow: 'hidden' }]}>
           <Text>Pizza Image</Text>
+          <Image width={100} height={100} style={[{ width: 400, height: 400, left: -150, top: -160 }]} source={require('./../assets/big-pizza.png')} />
         </View>
         <View style={[s.pb_xxxl, s.ph_l, s.aic]}>
           <Text style={[s.f_heading_3]}>{deliveryItem?.metadata?.addressDelivery ?? 'Missing Address'}</Text>

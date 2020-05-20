@@ -22,6 +22,8 @@ export const DeliveryItem = ({
     onReserve(delivery);
   }
 
+  console.log('deliver', { delivery });
+
   return (
     <HighlightPanel highlighted={isSelected && !delivery.isComplete} style={[s.mt_s, s.flx_row]}>
       <View style={[s.flx_i]}>
