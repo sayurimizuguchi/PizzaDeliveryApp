@@ -8,24 +8,35 @@ import { getDeliveries } from './data/get-deliveries';
 
 export const DeliveriesList = ({
   onDeliveryReserve = () => { },
+  onDeliveryStart = () => { },
+  completedDeliveryIds = [],
   style = []
 }) => {
 
   const [delivers, setDeliveries] = useState([])
 
   useEffect(() => {
-    getDeliveries().then(setDeliveries);
+    getDeliveries()
+      .then((deliveries) => deliveries.map(delivery => ({
+        ...delivery,
+        isComplete: completedDeliveryIds.includes(delivery.id)
+      })))
+      .then(setDeliveries);
   }, [])
 
-  const handleReserve = (deliveryItem) => {
-    onDeliveryReserve(deliveryItem)
-  }
+  useEffect(() => {
+    setDeliveries(delivers.map(delivery => ({
+      ...delivery,
+      isComplete: completedDeliveryIds.includes(delivery.id)
+    })))
+  }, [completedDeliveryIds])
 
   return (
     <FlatList
-      contentContainerStyle={[s.flx_i, ...style]}
+      style={[s.flx_i]}
+      contentContainerStyle={[...style]}
       data={delivers}
-      renderItem={({ item }) => <DeliveryItem onStart={handleReserve} delivery={item} />}
+      renderItem={({ item }) => <DeliveryItem onReserve={onDeliveryReserve} onStart={onDeliveryStart} delivery={item} />}
     />
   )
 }

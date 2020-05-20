@@ -1,18 +1,9 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import {
   SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
   StatusBar,
 } from 'react-native';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
 
-// import { getPaymentList } from '../api/request';
-import { CardBox } from '../components/card-box.component';
-import { TextDefault } from '../components/text.component';
-import { GET_PAYMENT_LIST } from '../general.constants';
-import { transformRespone } from '../api/request.utils';
 import { Header } from './components/header.component';
 import { MainTabs } from './components/main-tabs.component';
 import { DeliveriesList } from '../modules/deliveries/deliveries-list.component';
@@ -25,17 +16,34 @@ import { Navigation } from './navigation/navigation';
 
 const App = () => {
 
+  const [completedDeliveryIds, setCompletedDeliveryIds] = useState([]);
+
   const handleOnDeliveryReserve = (deliveryItem) => {
-    Navigation.toggleModal('DeliveryModal', { deliveryItem });
     reserveDelivery({ deliveryId: deliveryItem.id, driverId: getDriver().id })
+  }
+
+  const handleOnDeliveryStart = (deliveryItem) => {
+    Navigation.toggleModal('DeliveryModal', { deliveryItem });
+  }
+
+  const handleCompleteDelivery = (deliveryItem) => {
+    setCompletedDeliveryIds([
+      ...completedDeliveryIds,
+      deliveryItem.id,
+    ])
   }
 
   return (
     <SafeAreaView style={[s.ba, s.flx_i]}>
       <StatusBar barStyle="dark-content" />
-      <ModalDelivery ref={Navigation.addModal('DeliveryModal')} />
+      <ModalDelivery onCompleteDelivery={handleCompleteDelivery} ref={Navigation.addModal('DeliveryModal')} />
       <Header />
-      <DeliveriesList onDeliveryReserve={handleOnDeliveryReserve} style={[s.p_m]} />
+      <DeliveriesList
+        completedDeliveryIds={completedDeliveryIds}
+        onDeliveryStart={handleOnDeliveryStart}
+        onDeliveryReserve={handleOnDeliveryReserve}
+        style={[s.p_m]}
+      />
       <MainTabs />
     </SafeAreaView>
   );

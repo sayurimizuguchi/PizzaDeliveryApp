@@ -11,9 +11,5 @@ export const getDeliveries = () => {
     }
   })
     .then((r) => r.json())
-    .then((json) => {
-      console.log('json is', { json });
-      return json
-    })
     .then((json) => json.paymentIntent)
 }
