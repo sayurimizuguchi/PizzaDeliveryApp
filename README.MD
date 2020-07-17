@@ -13,7 +13,7 @@
 * [Node.js] - Backend
 * [Express] - API
 * [Stripe SDK] - Stripe API SDK
-* [Cypress] - Automation Testing [@sabrina-alves]
+* [Cypress] - Automation Testing [@Sabrina Alves]
 
 ### Details
 
@@ -62,8 +62,8 @@ Now you can hit the server and check the Web app is running on `localhost:3001`.
 ### Contributors
 
 - [@Nathaniel] - Designer & Developer
-- [@Sabrina Alves] - Developer
-- [@Sayuri Mizuguchi] - QA Automation Engineer
+- [@Sabrina Alves] - QA Automation Engineer
+- [@Sayuri Mizuguchi] - Developer
 
 
 ### Todos
